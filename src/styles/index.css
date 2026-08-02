@@ -1,0 +1,325 @@
+/* ============================================================
+   SYNAPSE — Global Design Tokens, Fonts & Base Styles
+   ============================================================ */
+
+/* ---------- Font Faces ---------- */
+@font-face {
+  font-family: 'Guldenz';
+  src: url('../assets/fonts/GULDENZ.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ClashDisplay';
+  src: url('../assets/fonts/ClashDisplay-Variable.woff2') format('woff2');
+  font-weight: 200 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'ClashDisplay';
+  src: url('../assets/fonts/ClashDisplay-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ClashDisplay';
+  src: url('../assets/fonts/ClashDisplay-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ClashDisplay';
+  src: url('../assets/fonts/ClashDisplay-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ClashDisplay';
+  src: url('../assets/fonts/ClashDisplay-Semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ClashDisplay';
+  src: url('../assets/fonts/ClashDisplay-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* ---------- CSS Design Tokens — Dark (Default) ---------- */
+:root {
+  --bg-primary:          #5D4439;
+  --bg-secondary:        #5D4439;
+  --bg-surface:          #C4C8D0;
+  --bg-surface-2:        #B4B9C2;
+  --text-primary:        #FFFFFF;
+  --text-secondary:      #FFFFFF;
+  --text-muted:          #9CA4AF;
+  --accent-blue:         #4A9EFF;
+  --accent-blue-dim:     #2A6EBF;
+  --accent-blue-glow:    rgba(74, 158, 255, 0.22);
+  --accent-blue-glow-strong: rgba(74, 158, 255, 0.45);
+  --accent-orange:       #4A9EFF;
+  --accent-orange-warm:  #2A6EBF;
+  --accent-orange-glow:  rgba(74, 158, 255, 0.22);
+  --border:              #6B707B;
+  --border-bright:       rgba(196, 200, 208, 0.55);
+  --border-blue:         rgba(74, 158, 255, 0.55);
+
+  --font-display: 'Guldenz', 'Playfair Display', Georgia, serif;
+  --font-body:    'ClashDisplay', 'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-xl:   32px;
+  --radius-pill: 999px;
+
+  --shadow-blue:   0 0 40px rgba(74,158,255,0.18), 0 0 80px rgba(74,158,255,0.07);
+  --shadow-orange: 0 0 40px rgba(232,116,42,0.18), 0 0 80px rgba(232,116,42,0.07);
+  --shadow-card:   0 8px 40px rgba(0,0,0,0.45);
+
+  --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-fast:   200ms var(--ease-smooth);
+  --transition-normal: 350ms var(--ease-smooth);
+  --transition-slow:   600ms var(--ease-smooth);
+
+  --nav-height: 72px;
+}
+
+/* ---------- Light Mode Overrides ---------- */
+[data-theme="light"] {
+  --bg-primary:          #FEC19F;
+  --bg-secondary:        #FEC19F;
+  --bg-surface:          #C4C8D0;
+  --bg-surface-2:        #B4B9C2;
+  --text-primary:        #000000;
+  --text-secondary:      #000000;
+  --text-muted:          #626875;
+  --accent-blue:         #2B7FD9;
+  --accent-blue-dim:     #1A5FAF;
+  --accent-blue-glow:    rgba(43, 127, 217, 0.18);
+  --accent-blue-glow-strong: rgba(43, 127, 217, 0.38);
+  --accent-orange:       #2B7FD9;
+  --accent-orange-warm:  #1A5FAF;
+  --accent-orange-glow:  rgba(43, 127, 217, 0.18);
+  --border:              #A4A8B0;
+  --border-bright:       rgba(43, 127, 217, 0.45);
+  --border-blue:         rgba(43, 127, 217, 0.45);
+
+  --shadow-blue:   0 0 40px rgba(43,127,217,0.13), 0 0 80px rgba(43,127,217,0.05);
+  --shadow-orange: 0 0 40px rgba(212,96,26,0.13), 0 0 80px rgba(212,96,26,0.05);
+}
+
+/* Surface contrast override for light grey background surfaces */
+.navbar, .step-card, .mockup-window, .feature-visual, .auth-form-panel {
+  --text-primary:   #000000;
+  --text-secondary: #000000;
+  --text-muted:     #4A4E56;
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { font-size: 16px; scroll-behavior: auto; }
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.65;
+  overflow-x: hidden;
+  transition: background-color 0.55s var(--ease-smooth), color 0.55s var(--ease-smooth);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Grain texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9990;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  background-repeat: repeat;
+  mix-blend-mode: overlay;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.75;
+}
+
+a { color: inherit; text-decoration: none; }
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: var(--font-body);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: var(--radius-pill); }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ---------- Layout Utilities ---------- */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.8rem;
+  border-radius: var(--radius-md);
+  font-family: 'ClashDisplay', var(--font-body), sans-serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--accent-blue);
+  color: #fff;
+  border-color: var(--accent-blue);
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.1);
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-smooth);
+}
+
+.btn-primary:hover::after { opacity: 1; }
+.btn-primary:hover {
+  box-shadow: var(--shadow-blue);
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1.5px solid var(--border);
+}
+
+.btn-ghost:hover {
+  border-color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* ---------- Form Elements ---------- */
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+.form-label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.95rem 0.2rem;
+  background: transparent;
+  border: none;
+  border-bottom: 1.5px solid var(--border);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  outline: none;
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+  border-radius: 0;
+}
+
+.form-input::placeholder { color: var(--text-muted); }
+
+.form-input:focus {
+  border-bottom-color: var(--accent-orange);
+  box-shadow: 0 4px 16px var(--accent-orange-glow);
+}
+
+/* ---------- Section Label ---------- */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-orange);
+  margin-bottom: 1rem;
+}
+
+.section-label::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 1.5px;
+  background: var(--accent-orange);
+  flex-shrink: 0;
+}
+
+/* ---------- Gradient Text ---------- */
+.gradient-text {
+  color: var(--accent-blue);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .container { padding-inline: 1.25rem; }
+}

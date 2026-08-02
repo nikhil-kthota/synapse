@@ -1,0 +1,108 @@
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+
+  /* Default (Dark Mode) schematic theme tokens over Brown background */
+  --schematic-line: var(--bg-surface);        /* #C4C8D0 light grey */
+  --schematic-line-opacity: 0.48;
+  --schematic-dot-opacity: 0.28;
+  --schematic-node-bg: #3A2A22;               /* Darker complementary brown for node core contrast */
+  --schematic-text: #9CA4AF;                  /* Cool slate telematic text */
+  --schematic-crosshair: var(--bg-surface);
+}
+
+/* Light Mode schematic overrides for sharp contrast on Salmon (#FEC19F) background */
+[data-theme="light"] .hero-bg {
+  --schematic-line: #3C4048;                  /* Crisp charcoal grey wireframe ink */
+  --schematic-line-opacity: 0.65;             /* Stronger opacity so wireframe tracks pop clearly on salmon */
+  --schematic-dot-opacity: 0.35;              /* Clearly defined charcoal dot matrix */
+  --schematic-node-bg: #FFF0E6;               /* Clean lighter salmon/cream tone for node core contrast */
+  --schematic-text: #2D323A;                  /* High-contrast dark charcoal telematic label text */
+  --schematic-crosshair: #3C4048;
+}
+
+/* Architectural dot-matrix field */
+.hero-bg__grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, var(--schematic-line) 1.5px, transparent 1.5px);
+  background-size: 36px 36px;
+  background-position: center;
+  opacity: var(--schematic-dot-opacity);
+}
+
+/* Corner plus crosshairs */
+.hero-bg__crosshair {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--schematic-crosshair);
+  opacity: 0.75;
+  line-height: 1;
+  z-index: 2;
+}
+.hero-bg__crosshair--tl { top: 2rem; left: 2.5rem; }
+.hero-bg__crosshair--tr { top: 2rem; right: 2.5rem; }
+.hero-bg__crosshair--bl { bottom: 2rem; left: 2.5rem; }
+.hero-bg__crosshair--br { bottom: 2rem; right: 2.5rem; }
+
+/* Technical status overlays */
+.hero-bg__tech-tag {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--schematic-text);
+  letter-spacing: 0.1em;
+  opacity: 0.85;
+  z-index: 2;
+}
+
+.hero-bg__tech-sub {
+  font-size: 0.68rem;
+  color: var(--accent-blue);
+  font-weight: 600;
+}
+
+.hero-bg__tech-tag--tl {
+  top: 2.2rem;
+  left: 4.2rem;
+}
+
+.hero-bg__tech-tag--tr {
+  top: 2.2rem;
+  right: 4.2rem;
+  text-align: right;
+  align-items: flex-end;
+}
+
+/* Vector Diagram Canvas */
+.hero-bg__diagram {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.95;
+  transition: opacity 0.4s ease;
+}
+
+@media (max-width: 992px) {
+  .hero-bg__diagram {
+    opacity: 0.45; /* Dim slightly on tablets/mobile to guarantee absolute headline legibility */
+  }
+  .hero-bg__tech-tag {
+    display: none;
+  }
+}

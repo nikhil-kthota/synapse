@@ -1,0 +1,124 @@
+.footer {
+  position: relative;
+  background: var(--bg-primary);
+  border-top: 2px solid #000000;
+  padding-top: 3.5rem;
+  overflow: hidden;
+
+  /* Schematic theme tokens matching Hero section */
+  --schematic-line: var(--bg-surface);
+  --schematic-dot-opacity: 0.28;
+}
+
+[data-theme="light"] .footer {
+  --schematic-line: #3C4048;
+  --schematic-dot-opacity: 0.35;
+}
+
+/* Architectural dot-matrix field matching Hero section */
+.footer-bg__grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, var(--schematic-line) 1.5px, transparent 1.5px);
+  background-size: 36px 36px;
+  background-position: center;
+  opacity: var(--schematic-dot-opacity);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.footer__inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  padding-bottom: 2.5rem;
+}
+
+.footer__left {
+  max-width: 320px;
+}
+
+.footer__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.footer__logo-mark {
+  font-size: 1.25rem;
+  color: var(--accent-blue);
+  filter: drop-shadow(0 0 6px var(--accent-blue-glow));
+}
+
+.footer__logo-text {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.12em;
+  color: var(--text-primary);
+}
+
+.footer__tagline {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  align-items: flex-end;
+}
+
+.footer__link {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer__link:hover {
+  color: var(--accent-blue);
+}
+
+.footer__bottom {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 1.2rem;
+  border-top: 1.5px solid rgba(0, 0, 0, 0.2);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer__copy {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+}
+
+.footer__sub {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 640px) {
+  .footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer__links { align-items: flex-start; }
+  .footer__bottom { flex-direction: column; align-items: flex-start; }
+}

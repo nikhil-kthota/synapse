@@ -1,0 +1,250 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9000;
+  background: var(--bg-surface);
+  border-bottom: 2px solid #000000;
+  box-sizing: border-box;
+  transition: background var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+.navbar--scrolled {
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme="light"] .navbar--scrolled {
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height);
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 2rem;
+  box-sizing: border-box;
+}
+
+/* Logo bounded by identical 2px solid black borders */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-inline: 1.8rem;
+  gap: 0.6rem;
+  text-decoration: none;
+  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
+  margin-left: -2rem;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.navbar__logo-mark {
+  font-size: 1.35rem;
+  color: var(--accent-blue);
+  line-height: 1;
+  filter: drop-shadow(0 0 8px var(--accent-blue-glow));
+}
+
+.navbar__logo-text {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.15em;
+  margin-right: -0.15em; /* Compensates for trailing letter-spacing to ensure true optical centering */
+  color: var(--text-primary);
+  transition: color var(--transition-normal);
+}
+
+.navbar__logo:hover .navbar__logo-text {
+  color: var(--accent-blue);
+}
+
+/* Middle hamburger button - hidden by default on screens > 770px */
+.navbar__burger-middle {
+  display: none;
+}
+
+.navbar__burger-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar__burger-icon span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #000000;
+  border-radius: 1px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  transform-origin: center;
+}
+
+/* Desktop nav — using CSS box-model borders to guarantee exact identical line thickness */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  margin-right: -2rem;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.navbar__text-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 2rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: #000000;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-left: 2px solid #000000;
+  box-sizing: border-box;
+  transition: background var(--transition-fast), color var(--transition-fast), filter var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.navbar__text-link:hover,
+.navbar__text-link--active {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--accent-blue);
+}
+
+/* Because border-box is used, the blue background remains inside the 2px black borders without overlap */
+.navbar__text-link--signup {
+  background: var(--accent-blue);
+  color: #FFFFFF;
+}
+
+.navbar__text-link--signup:hover,
+.navbar__text-link--signup.navbar__text-link--active {
+  background: var(--accent-blue);
+  color: #FFFFFF;
+  filter: brightness(1.08);
+}
+
+.navbar__toggle-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 1.8rem;
+  border-left: 2px solid #000000;
+  border-right: 2px solid #000000;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+/* Mobile dropdown menu for landing page section links (Hero, How It Works, Features, Preview) */
+.navbar__mobile-menu {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-surface);
+  border-bottom: 2px solid #000000;
+  overflow: hidden;
+}
+
+.navbar__mobile-link {
+  font-family: 'ClashDisplay', var(--font-body), sans-serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: #000000;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  text-decoration: none;
+  padding: 1.15rem 2rem;
+  border-top: 1.5px solid rgba(0, 0, 0, 0.15);
+  transition: background var(--transition-fast), color var(--transition-fast);
+  text-align: center;
+}
+
+.navbar__mobile-link:hover,
+.navbar__mobile-link:active {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--accent-blue);
+}
+
+/* 
+  At width <= 770px, where the right side navigation dots disappear,
+  activate the dynamic middle hamburger menu button. It occupies flex: 1, stretching/shrinking dynamically
+  to fill the empty space between Logo and Login.
+*/
+@media (max-width: 770px) {
+  .navbar__inner {
+    padding-inline: 0;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    justify-content: flex-start;
+  }
+  
+  .navbar__inner::-webkit-scrollbar {
+    display: none;
+  }
+
+  .navbar__logo {
+    margin-left: 0;
+    padding-inline: 1rem;
+    border-left: none; /* Align flush to screen edge */
+  }
+
+  /* Dynamically expanding middle compartment for the hamburger button */
+  .navbar__burger-middle {
+    display: flex;
+    flex: 1;
+    min-width: 48px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+    padding: 0;
+    flex-shrink: 0;
+  }
+  
+  .navbar__burger-middle:hover,
+  .navbar__burger-middle.open {
+    background: rgba(0, 0, 0, 0.06);
+  }
+
+  .navbar__burger-middle.open .navbar__burger-icon span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .navbar__burger-middle.open .navbar__burger-icon span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .navbar__burger-middle.open .navbar__burger-icon span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .navbar__actions {
+    margin-right: 0;
+    justify-content: flex-end;
+  }
+
+  .navbar__text-link {
+    padding: 0 1rem;
+    font-size: 0.95rem; /* Retain full readable font size */
+  }
+
+  .navbar__toggle-wrapper {
+    padding: 0 0.85rem;
+    border-right: none; /* Align flush to screen edge */
+  }
+}

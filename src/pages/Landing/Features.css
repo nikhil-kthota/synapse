@@ -1,0 +1,320 @@
+.features {
+  padding-block: 6.5rem;
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.features__header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.features__header .section-label {
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.features__header .section-label::before { display: none; }
+
+.features__title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.features__subtitle {
+  font-size: 1.05rem;
+  max-width: 560px;
+  margin-inline: auto;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* 
+  Asymmetrical Bento Grid Matrix matching exact width of Hero & HowItWorks (980px).
+  Bounded by uniform 2px solid black outer and inner dividing lines.
+*/
+.features__bento {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  max-width: 980px;
+  margin-inline: auto;
+  border-top: 2px solid #000000;
+  border-left: 2px solid #000000;
+  background: var(--bg-surface);
+  box-sizing: border-box;
+}
+
+/* Individual Bento Cards */
+.bento-card {
+  position: relative;
+  background: var(--bg-surface);
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  transition: background var(--transition-normal);
+}
+
+.bento-card--large {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 2.8rem;
+}
+
+.bento-card--medium {
+  grid-column: span 1;
+}
+
+.bento-card--wide {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 2.5rem 2.8rem;
+}
+
+/* Header Badge Row */
+.bento-card__badge-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.bento-badge {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #000000;
+  background: rgba(0, 0, 0, 0.08);
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid #000000;
+  white-space: nowrap;
+}
+
+.bento-tag {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bento-card__title {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 0.8rem;
+  line-height: 1.2;
+}
+
+.bento-card__desc {
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: #18191C;
+  font-weight: 400;
+  margin-bottom: 1.4rem;
+}
+
+.bento-card__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.bento-chip {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #000000;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid #000000;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Technical Schematic Visual Containers */
+.bento-card__visual {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1.5px solid #000000;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.bento-card__visual--graph {
+  padding: 1rem;
+}
+
+.schematic-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.6rem;
+}
+
+.schematic-title {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #000000;
+  letter-spacing: 0.06em;
+}
+
+.schematic-status {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+}
+
+/* Code Visual */
+.bento-card__visual--code {
+  margin-top: auto;
+}
+
+.code-tabs {
+  display: flex;
+  border-bottom: 1.5px solid #000000;
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.code-tab {
+  padding: 0.55rem 1.1rem;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #000000;
+  background: transparent;
+  border: none;
+  border-right: 1.5px solid #000000;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.code-tab.active {
+  background: var(--bg-surface);
+  font-weight: 700;
+}
+
+.code-block {
+  padding: 1rem;
+  margin: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #000000;
+  overflow-x: auto;
+}
+
+.code-h1 { font-weight: 800; color: #000000; }
+.code-h2 { font-weight: 700; color: #000000; }
+.code-comment { color: rgba(0, 0, 0, 0.5); font-style: italic; }
+.code-kw { color: var(--accent-blue); font-weight: 700; }
+.code-str { color: #000000; }
+
+/* Impact Visual */
+.bento-card__visual--impact {
+  padding: 1rem;
+  margin-top: auto;
+}
+
+.impact-meter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+  margin-bottom: 0.6rem;
+}
+
+.impact-label {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #000000;
+}
+
+.impact-value {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+}
+
+/* Legacy Stats Visual */
+.legacy-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1.5px solid #000000;
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.legacy-stat__val {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+
+.legacy-stat__lbl {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: 0.05em;
+}
+
+.bento-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .features__bento {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+
+  .bento-card--large,
+  .bento-card--wide {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.8rem 1.6rem;
+  }
+
+  .bento-card--medium {
+    padding: 1.8rem 1.6rem;
+  }
+
+  .legacy-stats {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+}

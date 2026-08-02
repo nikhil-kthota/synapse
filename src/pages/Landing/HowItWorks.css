@@ -1,0 +1,149 @@
+.how-it-works {
+  padding-block: 6.5rem;
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.how-it-works__header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.how-it-works__header .section-label {
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.how-it-works__header .section-label::before { display: none; }
+
+.how-it-works__title {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.how-it-works__subtitle {
+  font-size: 1.05rem;
+  max-width: 540px;
+  margin-inline: auto;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* 
+  Architectural grid matrix matching exact width of Hero section content (980px).
+  Bounded by uniform 2px solid black lines.
+*/
+.how-it-works__grid-matrix {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  max-width: 980px;
+  margin-inline: auto;
+  border-top: 2px solid #000000;
+  border-left: 2px solid #000000;
+  background: var(--bg-surface);
+  box-sizing: border-box;
+}
+
+/* Individual Step Cards with more compact proportions */
+.step-card {
+  position: relative;
+  background: var(--bg-surface);
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  padding: 2rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  transition: background var(--transition-normal);
+}
+
+.step-card--span2 {
+  grid-column: span 2;
+  padding: 2.2rem 2.5rem;
+}
+
+/* Single line header row containing label number, title, and icon */
+.step-card__header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
+  gap: 1rem;
+}
+
+.step-card__title-group {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+/* Using body font to ensure numerical characters are 100% visible and never cropped by display typefaces */
+.step-card__label {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #000000;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.08);
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid #000000;
+  white-space: nowrap;
+}
+
+.step-card__title {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.step-card__icon {
+  color: var(--accent-blue);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  transition: transform var(--transition-normal);
+}
+
+.step-card:hover .step-card__icon {
+  transform: scale(1.08);
+}
+
+.step-card__desc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #18191C;
+  font-weight: 400;
+  margin: 0;
+}
+
+.step-card--span2 .step-card__desc {
+  max-width: 860px;
+  font-size: 1.02rem;
+}
+
+@media (max-width: 900px) {
+  .how-it-works__grid-matrix {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+  }
+  .step-card--span2 {
+    grid-column: span 1;
+    padding: 1.8rem 1.6rem;
+  }
+  .step-card {
+    padding: 1.8rem 1.6rem;
+  }
+}

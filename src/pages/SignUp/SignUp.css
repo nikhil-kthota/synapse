@@ -1,0 +1,344 @@
+/* 100vh height container on theme brown (dark mode) / salmon (light mode) background */
+.auth-page {
+  position: relative;
+  height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg-primary); /* Brown in Dark Mode, Salmon in Light Mode */
+  box-sizing: border-box;
+}
+
+/* Main Container centered in the middle, slightly shifted right over Hero Background */
+.auth-main-container {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 820px;
+  margin-inline: auto;
+  margin-left: calc(50% - 410px + 30px);
+  padding: 1rem 1.5rem;
+  box-sizing: border-box;
+}
+
+/* 
+  Unified Architectural Bento Layout (Left Grid Sidebar + Right Form Card):
+  Left column is 240px wide; Right form is 2-column matrix.
+*/
+.auth-bento-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 0;
+  width: 100%;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+  box-sizing: border-box;
+}
+
+/* Left Grid Sidebar Column (Whole height of the form card) */
+.auth-left-sidebar {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid #000000;
+  border-left: 2px solid #000000;
+  background: var(--bg-surface);
+  box-sizing: border-box;
+}
+
+.sidebar-cell {
+  position: relative;
+  background: var(--bg-surface);
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  box-sizing: border-box;
+}
+
+.sidebar-cell--link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  padding-inline: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #000000;
+  text-decoration: none;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.sidebar-cell--link:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--accent-blue);
+}
+
+.sidebar-cell--logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  height: 50px;
+  text-decoration: none;
+}
+
+.auth-logo-mark {
+  font-size: 1.3rem;
+  color: var(--accent-blue);
+  line-height: 1;
+  filter: drop-shadow(0 0 8px var(--accent-blue-glow));
+}
+
+.auth-logo-text {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.15em;
+  margin-right: -0.15em;
+  color: var(--text-primary);
+}
+
+/* Sidebar Cell 3: Telemetry & Brand Specs */
+.sidebar-cell--info {
+  flex: 1;
+  padding: 1.6rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.sidebar-badge {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--accent-blue);
+  letter-spacing: 0.1em;
+}
+
+.sidebar-info-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #000000;
+  line-height: 1.2;
+}
+
+.sidebar-info-desc {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #18191C;
+}
+
+.sidebar-specs {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1.5px dashed rgba(0, 0, 0, 0.2);
+  padding-top: 1rem;
+}
+
+.sidebar-spec-item {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+/* Right Form Card Matrix */
+.auth-right-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 2px solid #000000;
+  background: var(--bg-surface);
+  box-sizing: border-box;
+}
+
+/* Base Card Cell */
+.card-cell {
+  position: relative;
+  background: var(--bg-surface);
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  box-sizing: border-box;
+}
+
+.card-cell--full {
+  grid-column: span 2;
+}
+
+/* Row 1: Heading & Subtitle */
+.card-cell--heading {
+  padding: 1.5rem 1.8rem 1.2rem 1.8rem;
+  text-align: center;
+  background: var(--bg-surface);
+}
+
+.auth-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+  color: #000000;
+  margin-bottom: 0.3rem;
+  line-height: 1.15;
+}
+
+.auth-subtitle {
+  font-size: 0.88rem;
+  color: #18191C;
+  line-height: 1.45;
+}
+
+/* Row 2: OAuth Buttons */
+.card-cell--oauth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #000000;
+  cursor: pointer;
+  border: none;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.card-cell--oauth:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--accent-blue);
+}
+
+/* Row 3: Divider Line */
+.card-cell--divider {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.card-cell--divider span {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #000000;
+}
+
+/* Row 4 & 5: Form Input Cells */
+.card-cell--input {
+  padding: 0.8rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: background var(--transition-fast);
+  background: var(--bg-surface);
+}
+
+.card-cell--input:focus-within {
+  background: rgba(74, 158, 255, 0.06);
+}
+
+.card-input-label {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.card-input-field {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1.5px solid #000000;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: #000000;
+  box-sizing: border-box;
+  transition: border-color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.card-input-field:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  background: var(--bg-surface);
+  box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.18);
+}
+
+.auth-error {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: #FF6B6B;
+}
+
+/* Row 6: Submit Button Block */
+.card-cell--submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.05rem 1rem;
+  background: var(--accent-blue);
+  color: #FFFFFF;
+  font-family: 'ClashDisplay', var(--font-body), sans-serif;
+  font-size: 1.02rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border: none;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  transition: filter var(--transition-fast);
+}
+
+.card-cell--submit:hover {
+  filter: brightness(1.08);
+}
+
+/* Row 7: Footer Link */
+.card-cell--footer {
+  padding: 0.85rem 1rem;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: #18191C;
+}
+
+.auth-link {
+  color: var(--accent-blue);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+  .auth-main-container {
+    margin-left: auto;
+  }
+  .auth-bento-layout {
+    grid-template-columns: 1fr;
+  }
+  .auth-left-sidebar {
+    border-right: 2px solid #000000;
+  }
+  .auth-right-form {
+    border-left: 2px solid #000000;
+  }
+  .card-cell--full,
+  .card-cell--oauth,
+  .card-cell--input {
+    grid-column: span 1;
+  }
+}
