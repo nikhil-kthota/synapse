@@ -184,28 +184,29 @@
 @media (max-width: 770px) {
   .navbar__inner {
     padding-inline: 0;
+    width: 100%;
     max-width: 100%;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    justify-content: flex-start;
-  }
-  
-  .navbar__inner::-webkit-scrollbar {
-    display: none;
+    overflow-x: hidden;
+    justify-content: space-between;
+    box-sizing: border-box;
   }
 
   .navbar__logo {
     margin-left: 0;
-    padding-inline: 1rem;
-    border-left: none; /* Align flush to screen edge */
+    padding-inline: 0.75rem;
+    border-left: none;
+    gap: 0.4rem;
+  }
+
+  .navbar__logo-text {
+    font-size: 1.15rem;
   }
 
   /* Dynamically expanding middle compartment for the hamburger button */
   .navbar__burger-middle {
     display: flex;
     flex: 1;
-    min-width: 48px;
+    min-width: 44px;
     height: 100%;
     align-items: center;
     justify-content: center;
@@ -214,7 +215,8 @@
     cursor: pointer;
     transition: background var(--transition-fast);
     padding: 0;
-    flex-shrink: 0;
+    flex-shrink: 1;
+    border-left: 2px solid #000000;
   }
   
   .navbar__burger-middle:hover,
@@ -239,12 +241,22 @@
   }
 
   .navbar__text-link {
-    padding: 0 1rem;
-    font-size: 0.95rem; /* Retain full readable font size */
+    padding: 0 0.75rem;
+    font-size: 0.88rem;
   }
 
   .navbar__toggle-wrapper {
-    padding: 0 0.85rem;
-    border-right: none; /* Align flush to screen edge */
+    padding: 0 0.6rem;
+    border-right: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar__logo-text {
+    font-size: 1rem;
+  }
+  .navbar__text-link {
+    padding: 0 0.5rem;
+    font-size: 0.8rem;
   }
 }

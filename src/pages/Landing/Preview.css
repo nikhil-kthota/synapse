@@ -304,11 +304,45 @@
 }
 
 @media (max-width: 768px) {
+  .preview__title {
+    font-size: clamp(1.8rem, 7.5vw, 2.6rem);
+    line-height: 1.08;
+  }
+  .preview__subtitle {
+    font-size: 0.95rem;
+  }
+  .mockup-chrome {
+    padding: 0.6rem 0.8rem;
+    gap: 0.5rem;
+  }
+  .mockup-title {
+    font-size: 0.75rem;
+    text-align: left;
+  }
+  .mockup-chrome-right {
+    gap: 0.35rem;
+    overflow-x: auto;
+    max-width: 100%;
+    scrollbar-width: none;
+  }
+  .mockup-chip {
+    padding: 0.2rem 0.45rem;
+    font-size: 0.72rem;
+  }
   .mockup-body {
     grid-template-columns: 1fr;
     height: auto;
   }
   .mockup-sidebar { display: none; }
-  .mockup-graph { height: 280px; }
-  .mockup-info-panel { width: 160px; padding: 0.8rem; }
+  .mockup-graph { height: 250px; }
+  .mockup-info-panel {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 0;
+    border-top: 2px solid #000000;
+  }
 }

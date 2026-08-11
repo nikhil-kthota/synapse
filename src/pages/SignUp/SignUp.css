@@ -324,21 +324,44 @@
 }
 
 @media (max-width: 800px) {
+  .auth-page {
+    height: auto;
+    min-height: 100vh;
+    max-height: none;
+    overflow-y: auto;
+    padding-block: 2rem;
+  }
   .auth-main-container {
     margin-left: auto;
+    width: 100%;
+    max-width: 520px;
+    padding-inline: 1rem;
   }
   .auth-bento-layout {
     grid-template-columns: 1fr;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
   }
   .auth-left-sidebar {
-    border-right: 2px solid #000000;
+    border-right: none;
   }
   .auth-right-form {
-    border-left: 2px solid #000000;
+    grid-template-columns: 1fr;
+    border-left: none;
   }
+  .card-cell,
   .card-cell--full,
   .card-cell--oauth,
-  .card-cell--input {
-    grid-column: span 1;
+  .card-cell--input,
+  .card-cell--submit,
+  .card-cell--footer {
+    grid-column: 1 / -1 !important;
+    width: 100%;
+  }
+  .auth-title {
+    font-size: 1.5rem;
+  }
+  .card-cell--heading {
+    padding: 1.2rem 1rem;
   }
 }

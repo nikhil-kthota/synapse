@@ -85,7 +85,7 @@
 .hero__headline {
   font-family: var(--font-display);
   font-size: clamp(2.8rem, 6.8vw, 6.2rem);
-  line-height: 0.93;
+  line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--text-primary);
   margin-bottom: 2.2rem;
@@ -154,18 +154,30 @@
 
 @media (max-width: 768px) {
   .hero__content {
-    padding-top: calc(var(--nav-height) + 2rem);
+    padding-top: calc(var(--nav-height) + 1.5rem);
+    padding-inline: 1rem;
   }
   .hero__headline {
-    font-size: clamp(2.6rem, 11vw, 4.5rem);
-    line-height: 1.05;
+    font-size: clamp(2.1rem, 9.5vw, 3.8rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+  .hero__badge-wrapper {
+    margin-bottom: 1.5rem;
   }
   .hero__badge {
-    padding: 0.5rem 1.2rem;
+    padding: 0.5rem 1rem;
+    max-width: 96%;
+    box-sizing: border-box;
+  }
+  .hero__badge-text {
+    font-size: 0.76rem;
+    text-align: center;
   }
   .hero__ctas {
     flex-direction: column;
     width: 100%;
+    max-width: 320px;
   }
   .hero__cta-primary, .hero__cta-ghost {
     width: 100%;
