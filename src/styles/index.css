@@ -3,12 +3,15 @@
    ============================================================ */
 
 /* ---------- Font Faces ---------- */
+/* Guldenz ships blank digit and comma glyphs, so numbers (and their separators) fall through to
+   ClashDisplay, next in --font-display. */
 @font-face {
   font-family: 'Guldenz';
   src: url('../assets/fonts/GULDENZ.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0000-002B, U+002D, U+002F, U+003A-10FFFF;
 }
 
 @font-face {
@@ -74,7 +77,7 @@
   --border-bright:       rgba(196, 200, 208, 0.55);
   --border-blue:         rgba(74, 158, 255, 0.55);
 
-  --font-display: 'Guldenz', 'Playfair Display', Georgia, serif;
+  --font-display: 'Guldenz', 'ClashDisplay', 'Playfair Display', Georgia, serif;
   --font-body:    'ClashDisplay', 'Inter', system-ui, sans-serif;
   --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
 

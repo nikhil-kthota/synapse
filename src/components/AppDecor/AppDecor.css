@@ -1,0 +1,139 @@
+/* ---------- Fixed blueprint framing ---------- */
+.app-decor {
+  position: fixed;
+  inset: calc(var(--nav-height) + 0.9rem) 0.9rem 0.9rem;
+  pointer-events: none;
+  z-index: 0;
+  --decor-ink: var(--bg-surface);
+  --decor-opacity: 0.45;
+}
+
+[data-theme="light"] .app-decor {
+  --decor-ink: #3C4048;
+  --decor-opacity: 0.5;
+}
+
+.app-decor__cross {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--decor-ink);
+  opacity: var(--decor-opacity);
+}
+
+.app-decor__cross--tl { top: 0; left: 0; }
+.app-decor__cross--tr { top: 0; right: 0; }
+.app-decor__cross--bl { bottom: 0; left: 0; }
+.app-decor__cross--br { bottom: 0; right: 0; }
+
+.app-decor__rail {
+  position: absolute;
+  top: 50%;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  color: var(--decor-ink);
+  opacity: calc(var(--decor-opacity) * 0.8);
+  white-space: nowrap;
+}
+
+.app-decor__rail--left {
+  left: 0.15rem;
+  transform: translateY(-50%) rotate(180deg);
+  writing-mode: vertical-rl;
+}
+
+.app-decor__rail--right {
+  right: 0.15rem;
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+}
+
+.app-page > main,
+.app-page > .footer {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1340px) {
+  .app-decor__rail { display: none; }
+}
+
+@media (max-width: 700px) {
+  .app-decor { display: none; }
+}
+
+/* ---------- Indexed sheet header ---------- */
+.sheet-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.8rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1.5px dashed var(--border-bright);
+}
+
+.sheet-head__index {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--accent-blue);
+}
+
+.sheet-head__index::before {
+  content: '';
+  width: 28px;
+  height: 1.5px;
+  background: var(--accent-blue);
+}
+
+.sheet-head__index span {
+  color: var(--text-secondary);
+  opacity: 0.85;
+}
+
+.sheet-head__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin-top: 0.85rem;
+}
+
+.sheet-head__aside {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+/* ---------- Monospace telemetry tag, as in the hero ---------- */
+.tech-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  opacity: 0.9;
+  white-space: nowrap;
+}
+
+.tech-tag b {
+  font-weight: 500;
+  color: var(--accent-blue);
+}
+
+.tech-tag--ok b { color: #36B37E; }
+.tech-tag--warn b { color: #E5A93B; }
+.tech-tag--err b { color: #E5574C; }
+
+[data-theme="light"] .tech-tag--ok b { color: #1F7A50; }
+[data-theme="light"] .tech-tag--warn b { color: #9A6400; }
+[data-theme="light"] .tech-tag--err b { color: #B42318; }

@@ -1,5 +1,7 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import { useSectionLink } from '../../components/Footer/Footer';
 import { motion } from 'framer-motion';
 import HeroBackground from '../../components/HeroBackground/HeroBackground';
 import './Hero.css';
@@ -15,6 +17,8 @@ const itemVariants = {
 };
 
 export default function Hero() {
+  const { user } = useAuth();
+  const sectionLink = useSectionLink();
   return (
     <section id="hero" className="hero">
       {/* Interactive Architectural Knowledge Graph Background */}
@@ -56,13 +60,13 @@ export default function Hero() {
 
         {/* CTAs */}
         <motion.div className="hero__ctas" variants={itemVariants}>
-          <Link to="/signup" className="btn btn-primary hero__cta-primary">
+          <Link to={user ? '/app' : '/signup'} className="btn btn-primary hero__cta-primary">
             Analyze a Repository
             <svg width="15" height="15" viewBox="0 0 14 14" fill="none">
               <path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </Link>
-          <a href="#how-it-works" className="btn btn-ghost hero__cta-ghost">
+          <a href="#/" className="btn btn-ghost hero__cta-ghost" onClick={sectionLink('how-it-works')}>
             See How It Works
           </a>
         </motion.div>

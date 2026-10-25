@@ -135,6 +135,119 @@
   filter: brightness(1.08);
 }
 
+button.navbar__text-link {
+  border-top: none;
+  border-bottom: none;
+  border-right: none;
+  cursor: pointer;
+}
+
+.navbar__spacer {
+  flex: 1;
+}
+
+.navbar__account {
+  position: relative;
+  height: 100%;
+  display: flex;
+}
+
+.navbar__account-btn {
+  gap: 0.5rem;
+}
+
+.navbar__caret {
+  transition: transform var(--transition-fast);
+}
+
+.navbar__caret.open {
+  transform: rotate(180deg);
+}
+
+/* Account menu: a small bento panel hanging off the navbar */
+.navbar__dropdown {
+  position: absolute;
+  top: 100%;
+  min-width: 230px;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-surface);
+  border: 2px solid #000;
+  border-top: none;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+  z-index: 9100;
+}
+
+.navbar__dropdown-head {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1rem;
+  background: var(--bg-surface-2);
+  border-bottom: 2px solid #000;
+}
+
+.navbar__dropdown-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: #000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navbar__dropdown-email {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: #4A4E56;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.navbar__dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.15);
+  background: var(--bg-surface);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #000;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.navbar__dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.navbar__dropdown-item:hover,
+.navbar__dropdown-item:focus-visible {
+  background: rgba(74, 158, 255, 0.12);
+  color: var(--accent-blue);
+  outline: none;
+}
+
+.navbar__dropdown-item--danger {
+  color: #B42318;
+}
+
+.navbar__dropdown-item--danger:hover,
+.navbar__dropdown-item--danger:focus-visible {
+  background: #D2453B;
+  color: #fff;
+}
+
+/* App pages have no burger, so tighten the links before the 770px mobile layout kicks in. */
+@media (max-width: 960px) {
+  .navbar__text-link { padding: 0 1.2rem; }
+  .navbar__toggle-wrapper { padding: 0 1.1rem; }
+}
+
 .navbar__toggle-wrapper {
   display: flex;
   align-items: center;

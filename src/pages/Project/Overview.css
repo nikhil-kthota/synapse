@@ -1,0 +1,120 @@
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.overview-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 1.1rem 1.25rem;
+}
+
+.overview-tile__value {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.05;
+  color: #000;
+}
+
+.overview-tile .cell-label {
+  margin: 0;
+  color: #4A4E56;
+}
+
+.overview-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.overview-langs {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.overview-lang__head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.overview-lang__head .mono {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: #4A4E56;
+}
+
+.overview-bar {
+  height: 10px;
+  border: 1.5px solid #000;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.overview-bar > div {
+  height: 100%;
+  background: var(--accent-blue);
+}
+
+.overview-hub {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  border-top: none;
+  border-left: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: background var(--transition-fast);
+}
+
+.overview-hub:hover {
+  background: rgba(74, 158, 255, 0.1);
+}
+
+.overview-hub__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.overview-hub__text strong {
+  font-size: 0.92rem;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.overview-hub__text .mono {
+  font-size: 0.7rem;
+  color: #4A4E56;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.overview-lib {
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.overview-lib:hover {
+  background: var(--accent-blue);
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .overview-columns {
+    grid-template-columns: 1fr;
+  }
+}

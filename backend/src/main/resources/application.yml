@@ -1,0 +1,74 @@
+spring:
+  application:
+    name: synapse-backend
+  # Secrets live in the repo-root .env (generated locally, gitignored).
+  config:
+    import:
+      - optional:file:../.env[.properties]
+      - optional:file:.env[.properties]
+  datasource:
+    url: jdbc:postgresql://localhost:${SYNAPSE_DB_PORT:5433}/${POSTGRES_DB:synapse}
+    username: ${POSTGRES_USER:synapse}
+    password: ${POSTGRES_PASSWORD:}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+  mvc:
+    async:
+      # Chat answers stream for as long as the local model needs.
+      request-timeout: 10m
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+  threads:
+    virtual:
+      enabled: true
+  http:
+    clients:
+      read-timeout: 10m
+      connect-timeout: 10s
+  ai:
+    ollama:
+      base-url: ${OLLAMA_BASE_URL:http://localhost:11434}
+      chat:
+        model: ${OLLAMA_MODEL:qwen2.5-coder:7b}
+        temperature: 0.2
+        num-ctx: 8192
+        keep-alive: 10m
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+synapse:
+  jwt:
+    secret: ${SYNAPSE_JWT_SECRET}
+    ttl: 7d
+  cors:
+    allowed-origins:
+      - http://localhost:5173
+      - http://127.0.0.1:5173
+      - https://nikhil-kthota.github.io
+  analysis:
+    workspace: ${java.io.tmpdir}/synapse-workspace
+    max-files: 8000
+    max-file-bytes: 1048576
+    max-repo-bytes: 524288000
+    # Number of files the AI summarises per depth setting.
+    ai-files:
+      quick: 10
+      standard: 25
+      deep: 60
+
+logging:
+  level:
+    org.eclipse.jgit: warn

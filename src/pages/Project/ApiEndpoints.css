@@ -1,0 +1,78 @@
+.api-empty {
+  min-height: 180px;
+}
+
+.api-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: var(--bg-surface-2);
+}
+
+.api-toolbar .cell-label {
+  margin: 0;
+}
+
+.api-filter {
+  max-width: 340px;
+}
+
+.api-table-cell {
+  padding: 0;
+  overflow-x: auto;
+}
+
+.api-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.api-table th {
+  padding: 0.6rem 1rem;
+  text-align: left;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 2px solid #000;
+}
+
+.api-table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.14);
+  vertical-align: top;
+}
+
+.api-table tbody tr {
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.api-table tbody tr:hover {
+  background: rgba(74, 158, 255, 0.1);
+}
+
+.api-path {
+  font-size: 0.82rem;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.api-handler {
+  font-weight: 600;
+}
+
+.api-location {
+  font-size: 0.68rem;
+  color: #4A4E56;
+  overflow-wrap: anywhere;
+}
+
+.api-summary {
+  max-width: 460px;
+  color: #18191C;
+  line-height: 1.5;
+}

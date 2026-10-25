@@ -304,6 +304,22 @@
   filter: brightness(1.08);
 }
 
+.card-cell--submit:disabled {
+  cursor: progress;
+  filter: saturate(0.6);
+}
+
+/* Server-side error (wrong password, email taken, backend offline) */
+.card-cell--server-error {
+  padding: 0.75rem 1.1rem;
+  background: rgba(255, 107, 107, 0.16);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #8A1C1C;
+  text-align: center;
+}
+
 /* Row 7: Footer Link */
 .card-cell--footer {
   padding: 0.85rem 1rem;

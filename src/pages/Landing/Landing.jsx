@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Navbar from '../../components/Navbar/Navbar';
 import ScrollDotNav from '../../components/ScrollDotNav/ScrollDotNav';
@@ -14,6 +16,22 @@ const pageVariants = {
 };
 
 export default function Landing() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Footer/menu links from other pages arrive with the section to show.
+  useEffect(() => {
+    const id = location.state?.scrollTo;
+    if (!id) return undefined;
+    const timer = setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el && window.__lenis) window.__lenis.scrollTo(el, { offset: -80, duration: 1.1 });
+      else el?.scrollIntoView({ behavior: 'smooth' });
+      navigate('.', { replace: true, state: null });
+    }, 450);
+    return () => clearTimeout(timer);
+  }, [location.state, navigate]);
+
   return (
     <motion.div
       variants={pageVariants}

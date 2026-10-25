@@ -1,0 +1,169 @@
+.md {
+  color: #18191C;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.md > *:first-child {
+  margin-top: 0;
+}
+
+.md h1,
+.md h2,
+.md h3,
+.md h4 {
+  font-family: var(--font-display);
+  color: #000;
+  line-height: 1.15;
+  margin: 1.8em 0 0.6em;
+}
+
+.md h1 {
+  font-size: 2rem;
+  padding-bottom: 0.4em;
+  border-bottom: 2px solid #000;
+}
+
+.md h2 {
+  font-size: 1.45rem;
+}
+
+.md h3 {
+  font-size: 1.15rem;
+}
+
+.md h4 {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.md p,
+.md ul,
+.md ol,
+.md blockquote {
+  margin: 0 0 1em;
+  color: #18191C;
+}
+
+.md ul,
+.md ol {
+  padding-left: 1.4em;
+}
+
+.md li {
+  margin: 0.25em 0;
+}
+
+.md strong {
+  font-weight: 600;
+  color: #000;
+}
+
+.md a {
+  color: var(--accent-blue-dim);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.md blockquote {
+  padding: 0.6em 1em;
+  border-left: 4px solid var(--accent-blue);
+  background: rgba(74, 158, 255, 0.08);
+}
+
+.md hr {
+  border: none;
+  border-top: 1.5px dashed rgba(0, 0, 0, 0.25);
+  margin: 2em 0;
+}
+
+.md-inline {
+  font-family: var(--font-mono);
+  font-size: 0.84em;
+  padding: 0.12em 0.4em;
+  background: rgba(0, 0, 0, 0.07);
+  border-radius: 4px;
+}
+
+.md-code {
+  margin: 0 0 1.2em;
+  padding: 0.9rem 1.1rem;
+  overflow-x: auto;
+  background: #1C1D21;
+  color: #E6E8EC;
+  border: 2px solid #000;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.md-code code {
+  font-family: inherit;
+}
+
+.md-table-wrap {
+  overflow-x: auto;
+  margin: 0 0 1.2em;
+  border: 2px solid #000;
+}
+
+.md table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+}
+
+.md th,
+.md td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.18);
+  border-right: 1.5px solid rgba(0, 0, 0, 0.18);
+  text-align: left;
+  vertical-align: top;
+}
+
+.md th {
+  background: var(--bg-surface-2);
+  font-weight: 700;
+  color: #000;
+}
+
+.md-diagram {
+  margin: 0 0 1.2em;
+  padding: 1rem;
+  border: 2px solid #000;
+  background: var(--bg-surface);
+  overflow-x: auto;
+  text-align: center;
+}
+
+.md-diagram svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.md-diagram--loading {
+  font-size: 0.8rem;
+  color: #4A4E56;
+}
+
+.md-node-link {
+  display: inline;
+  padding: 0 0.15em;
+  border-bottom: 1.5px solid var(--accent-blue);
+  font: inherit;
+  font-weight: 600;
+  color: var(--accent-blue-dim);
+  cursor: pointer;
+}
+
+.md-node-link:hover {
+  background: rgba(74, 158, 255, 0.14);
+}
+
+.md-node-link code {
+  color: inherit;
+}

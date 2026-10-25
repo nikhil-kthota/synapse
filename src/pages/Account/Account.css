@@ -1,0 +1,155 @@
+.account-profile {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 1.4rem 1.5rem;
+}
+
+.account-avatar {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-blue);
+  border: 2px solid #000;
+  box-shadow: 6px 6px 0 #000;
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.account-identity {
+  min-width: 0;
+}
+
+.account-name {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  overflow-wrap: anywhere;
+}
+
+.account-email {
+  margin-top: 0.2rem;
+  font-size: 0.8rem;
+  color: #18191C;
+  overflow-wrap: anywhere;
+}
+
+.account-stats {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1.5px solid #000;
+  margin-top: auto;
+}
+
+.account-stat {
+  display: flex;
+  flex-direction: column;
+  padding: 0.55rem 0.7rem;
+  border-right: 1.5px solid #000;
+  border-bottom: 1.5px solid #000;
+  background: var(--bg-surface);
+}
+
+.account-stat:nth-child(2n) { border-right: none; }
+.account-stat:nth-last-child(-n + 2) { border-bottom: none; }
+
+.account-stat__value {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.account-stat__label {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4A4E56;
+}
+
+.account-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.2rem 1.25rem;
+}
+
+.account-form .cell-hint {
+  margin-top: -0.3rem;
+}
+
+.account-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+}
+
+.account-submit {
+  align-self: flex-start;
+  margin-top: 0.2rem;
+}
+
+.account-msg {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.account-msg--error { color: #B42318; }
+.account-msg--ok { color: #1F7A50; }
+
+.account-section-title {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+}
+
+/* ---------- Danger zone ---------- */
+.account-danger {
+  border-top-color: #B42318;
+  border-left-color: #B42318;
+}
+
+.account-danger > .cell {
+  border-right-color: #B42318;
+  border-bottom-color: #B42318;
+}
+
+.account-danger__info {
+  background: repeating-linear-gradient(-45deg, rgba(210, 69, 59, 0.07) 0 10px, transparent 10px 20px), var(--bg-surface);
+}
+
+.account-danger__label::before {
+  background: #D2453B;
+}
+
+.account-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: #18191C;
+  cursor: pointer;
+}
+
+.account-check input {
+  margin-top: 0.15rem;
+  accent-color: #D2453B;
+}
+
+@media (max-width: 700px) {
+  .account-profile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .account-pair {
+    grid-template-columns: 1fr;
+  }
+}

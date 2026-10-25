@@ -1,0 +1,148 @@
+.proj-telemetry {
+  margin-bottom: 1.4rem;
+}
+
+.proj-telemetry .sheet-head__tags {
+  margin-top: 0.2rem;
+}
+
+.proj-header {
+  margin-bottom: 1.8rem;
+}
+
+.proj-back {
+  display: flex;
+  align-items: center;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #000;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.proj-back:hover {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--accent-blue);
+}
+
+.proj-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.proj-title {
+  color: #000;
+  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+  overflow-wrap: anywhere;
+}
+
+.proj-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.6rem;
+}
+
+.proj-source {
+  color: #18191C;
+  margin-right: 0.3rem;
+  text-decoration: underline;
+  text-decoration-color: rgba(0, 0, 0, 0.3);
+  text-underline-offset: 3px;
+}
+
+a.proj-source:hover {
+  color: var(--accent-blue);
+}
+
+.proj-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.proj-section {
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .proj-header .proj-actions {
+    grid-column: span 12;
+    justify-content: flex-start;
+  }
+}
+
+/* ---------- Pipeline ---------- */
+.proj-pipeline .proj-stage {
+  grid-column: span 12;
+}
+
+@media (min-width: 700px) {
+  .proj-pipeline .proj-stage {
+    grid-column: auto;
+  }
+  .proj-pipeline {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .proj-pipeline > .cell:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+.proj-stage {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: background var(--transition-normal), color var(--transition-normal);
+}
+
+.proj-stage__num {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.proj-stage__label {
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.proj-stage--todo {
+  color: #6B707B;
+}
+
+.proj-stage--active {
+  background: var(--accent-blue);
+  color: #fff;
+}
+
+.proj-stage--done {
+  background: var(--bg-surface-2);
+}
+
+.proj-pipeline__msg {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+}
+
+.proj-pipeline__msg .app-spinner {
+  width: 12px;
+  height: 12px;
+}
+
+/* ---------- Tabs ---------- */
+.proj-tabs {
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+}
+
+.proj-tab-body {
+  margin-top: 1.5rem;
+}

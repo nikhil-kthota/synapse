@@ -1,0 +1,415 @@
+/* ============================================================
+   SYNAPSE — Application (signed-in) design primitives.
+   Same language as the landing/auth pages: silver surfaces,
+   2px black CAD borders, Guldenz headings, blue accent.
+   ============================================================ */
+
+.app-page {
+  min-height: 100vh;
+  padding-top: calc(var(--nav-height) + 2.25rem);
+  padding-bottom: 4rem;
+  background-color: var(--bg-primary);
+  background-image: radial-gradient(rgba(0, 0, 0, 0.16) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+[data-theme="dark"] .app-page {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+}
+
+.app-container {
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+.app-heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  color: var(--text-primary);
+  line-height: 1.05;
+}
+
+.app-subheading {
+  font-size: 0.98rem;
+  color: var(--text-secondary);
+  opacity: 0.85;
+  margin-top: 0.4rem;
+}
+
+.app-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 2.8rem 0 1.2rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1.5px dashed var(--border-bright);
+}
+
+.app-section-index {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--accent-blue);
+  margin-bottom: 0.35rem;
+}
+
+/* ---------- CAD corner marks on key panels ---------- */
+.cad {
+  position: relative;
+}
+
+.cad::before,
+.cad::after {
+  content: '+';
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--text-primary);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.cad::before { top: -1.15rem; left: -1.15rem; }
+.cad::after { bottom: -1.15rem; right: -1.15rem; }
+
+/* Cells keep black text inside light surfaces; the marks sit on the page background. */
+.bento.cad::before,
+.bento.cad::after,
+.gx-window.cad::before,
+.gx-window.cad::after {
+  color: var(--bg-surface);
+}
+
+[data-theme="light"] .bento.cad::before,
+[data-theme="light"] .bento.cad::after,
+[data-theme="light"] .gx-window.cad::before,
+[data-theme="light"] .gx-window.cad::after {
+  color: #3C4048;
+}
+
+@media (max-width: 600px) {
+  .cad::before, .cad::after { display: none; }
+}
+
+/* ---------- Bento grid ---------- */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  border-top: 2px solid #000;
+  border-left: 2px solid #000;
+  background: var(--bg-surface);
+  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.28);
+  color: #000;
+  --text-primary: #000000;
+  --text-secondary: #18191C;
+  --text-muted: #4A4E56;
+}
+
+.cell {
+  grid-column: span 12;
+  position: relative;
+  min-width: 0;
+  padding: 1rem 1.25rem;
+  background: var(--bg-surface);
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  color: #000;
+}
+
+.cell--3 { grid-column: span 3; }
+.cell--4 { grid-column: span 4; }
+.cell--5 { grid-column: span 5; }
+.cell--6 { grid-column: span 6; }
+.cell--7 { grid-column: span 7; }
+.cell--8 { grid-column: span 8; }
+.cell--9 { grid-column: span 9; }
+.cell--muted { background: var(--bg-surface-2); }
+.cell--tight { padding: 0.6rem 0.9rem; }
+.cell--center { display: flex; align-items: center; justify-content: center; text-align: center; }
+
+.cell-label {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #000;
+  margin-bottom: 0.35rem;
+}
+
+.cell-label::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--accent-blue);
+  border: 1px solid #000;
+  flex-shrink: 0;
+}
+
+.cell-label--plain::before { display: none; }
+
+.cell-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  line-height: 1.15;
+  color: #000;
+}
+
+.cell-text {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #18191C;
+}
+
+.cell-hint {
+  font-size: 0.74rem;
+  color: #4A4E56;
+  margin-top: 0.35rem;
+  line-height: 1.4;
+}
+
+/* ---------- Buttons ---------- */
+.btn-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 1rem;
+  background: var(--accent-blue);
+  color: #fff;
+  font-family: 'ClashDisplay', var(--font-body), sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  border: none;
+  cursor: pointer;
+  transition: filter var(--transition-fast);
+}
+
+.btn-cell:hover { filter: brightness(1.08); }
+.btn-cell:disabled { cursor: progress; filter: saturate(0.5); }
+
+.btn-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.95rem;
+  background: var(--bg-surface);
+  border: 1.5px solid #000;
+  border-radius: var(--radius-sm);
+  color: #000;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn-line:hover { background: rgba(0, 0, 0, 0.07); color: var(--accent-blue); }
+.btn-line:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-line--blue { background: var(--accent-blue); color: #fff; }
+.btn-line--blue:hover { background: var(--accent-blue); color: #fff; filter: brightness(1.08); }
+.btn-line--danger {
+  color: #B42318;
+  border-color: #B42318;
+  background: rgba(210, 69, 59, 0.08);
+}
+.btn-line--danger:hover {
+  color: #fff;
+  background: #D2453B;
+  border-color: #000;
+}
+
+/* Full-width destructive action, the red counterpart of .btn-cell */
+.btn-cell--danger { background: #D2453B; }
+.btn-cell--danger:hover { filter: brightness(1.06); }
+.btn-cell--danger:disabled { opacity: 0.55; filter: none; cursor: not-allowed; }
+
+/* ---------- Inputs ---------- */
+.app-input,
+.app-select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1.5px solid #000;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: #000;
+  transition: border-color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.app-input::placeholder { color: #626875; }
+
+.app-input:focus,
+.app-select:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  background: var(--bg-surface);
+  box-shadow: 0 0 0 3px rgba(74, 158, 255, 0.2);
+}
+
+.app-select { cursor: pointer; appearance: auto; }
+
+/* ---------- Chips ---------- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.6rem;
+  border: 1.5px solid #000;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #000;
+  white-space: nowrap;
+}
+
+.chip--blue { background: var(--accent-blue); color: #fff; }
+.chip--ok { background: #2E9E6B; color: #fff; }
+.chip--warn { background: #E5A93B; color: #000; }
+.chip--err { background: #D2453B; color: #fff; }
+.chip--dark { background: #18191C; color: #fff; }
+
+.chip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  flex-shrink: 0;
+}
+
+.chip-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+/* ---------- Tabs ---------- */
+/* Tabs always fit their row: text and padding shrink with the viewport instead of scrolling. */
+.tabs {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  border-top: 2px solid #000;
+  border-left: 2px solid #000;
+  background: var(--bg-surface);
+}
+
+.tab {
+  min-width: 0;
+  padding: 0.85rem clamp(0.35rem, 1.6vw, 1.2rem);
+  font-size: clamp(0.74rem, 1.5vw, 0.9rem);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  border: none;
+  border-right: 2px solid #000;
+  border-bottom: 2px solid #000;
+  background: var(--bg-surface);
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.tab:hover { background: rgba(0, 0, 0, 0.06); color: var(--accent-blue); }
+.tab--active, .tab--active:hover { background: var(--accent-blue); color: #fff; }
+.tab:disabled { color: #8A8F98; cursor: not-allowed; background: var(--bg-surface); }
+
+@media (max-width: 520px) {
+  .tabs--wrap {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---------- Progress ---------- */
+.progress {
+  height: 14px;
+  border: 1.5px solid #000;
+  background: rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.progress__fill {
+  height: 100%;
+  background-color: var(--accent-blue);
+  background-image: linear-gradient(45deg, rgba(255,255,255,0.22) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.22) 50%, rgba(255,255,255,0.22) 75%, transparent 75%);
+  background-size: 18px 18px;
+  animation: progress-stripes 0.9s linear infinite;
+  transition: width 0.6s var(--ease-smooth);
+}
+
+@keyframes progress-stripes { to { background-position: 18px 0; } }
+
+/* ---------- Feedback ---------- */
+.app-error {
+  padding: 0.75rem 1.1rem;
+  background: rgba(210, 69, 59, 0.15);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #8A1C1C;
+}
+
+.app-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  min-height: 40vh;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.app-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: app-spin 0.8s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes app-spin { to { transform: rotate(360deg); } }
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 900px) {
+  .cell--3, .cell--4 { grid-column: span 6; }
+  .cell--5, .cell--6, .cell--7, .cell--8, .cell--9 { grid-column: span 12; }
+}
+
+@media (max-width: 600px) {
+  .app-container { padding-inline: 1rem; }
+  .cell--3, .cell--4 { grid-column: span 12; }
+  .app-page { padding-top: calc(var(--nav-height) + 1.25rem); }
+}
+
+/* Keep the footer at the bottom of short pages without a gap under it. */
+.app-page {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0;
+}
+
+.app-page > main {
+  flex: 1;
+  padding-bottom: 4rem;
+}

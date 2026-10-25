@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 import WaveformCanvas from '../../components/WaveformCanvas/WaveformCanvas';
 import './Preview.css';
 
 export default function Preview() {
+  const { user } = useAuth();
   return (
     <>
       {/* Waveform divider */}
@@ -154,7 +156,7 @@ export default function Preview() {
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.3 }}
           >
-            <Link to="/signup" className="btn btn-primary">
+            <Link to={user ? '/app' : '/signup'} className="btn btn-primary">
               Get Started →
             </Link>
           </motion.div>
